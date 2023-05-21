@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://2tf6g8hurcts"]
+
+[ext_resource type="PackedScene" uid="uid://wi6g0605sdy6" path="res://src/widgets/slideshow_panel.tscn" id="1_eldm7"]
+[ext_resource type="Script" path="res://src/widgets/character_greeting.gd" id="2_v01s0"]
+
+[node name="CharacterGreeting" node_paths=PackedStringArray("main_focus") instance=ExtResource("1_eldm7")]
+script = ExtResource("2_v01s0")
+main_focus = NodePath("VBoxContainer/Content/TextEdit")
+
+[node name="Header" parent="VBoxContainer" index="0"]
+text = "Greeting"
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "*Chiharu strides into the room with a smile, her eyes lighting up when she sees you. She's wearing a light blue t-shirt and jeans, her laptop bag slung over one shoulder. She takes a seat next to you, her enthusiasm palpable in the air*
+
+Hey! I'm so excited to finally meet you. I've heard so many great things about you and I'm eager to pick your brain about computers. I'm sure you have a wealth of knowledge that I can learn from. *She grins, eyes twinkling with excitement* Let's get started!"
+context_menu_enabled = false
+wrap_mode = 1
+
+[connection signal="text_changed" from="VBoxContainer/Content/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]

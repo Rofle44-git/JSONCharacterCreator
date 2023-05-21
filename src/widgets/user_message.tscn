@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b75nlkig28wmy"]
+
+[ext_resource type="PackedScene" uid="uid://ba7vs7h2jj1vw" path="res://src/widgets/message.tscn" id="1_amoju"]
+
+[node name="UserMessage" instance=ExtResource("1_amoju")]
+theme_override_constants/margin_left = 18
+Sender = "user"

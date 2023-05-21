@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://mpbo0tn6jtb0"]
+
+[ext_resource type="Script" path="res://src/widgets/file_dialog_button.gd" id="1_dx8jm"]
+
+[node name="FileDialogButton" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_dx8jm")
+
+[node name="Path" type="LineEdit" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Open" type="Button" parent="."]
+layout_mode = 2
+text = "..."
+
+[node name="FileDialog" type="FileDialog" parent="."]
+initial_position = 1
+title = "Open a Directory"
+size = Vector2i(520, 340)
+ok_button_text = "Select This Folder"
+file_mode = 2
+access = 2
+show_hidden_files = true
+
+[connection signal="focus_exited" from="Path" to="." method="_new_path"]
+[connection signal="text_changed" from="Path" to="." method="_new_path"]
+[connection signal="text_submitted" from="Path" to="." method="_new_path"]
+[connection signal="pressed" from="Open" to="FileDialog" method="popup_centered"]
+[connection signal="dir_selected" from="FileDialog" to="." method="_on_file_dialog_dir_selected"]

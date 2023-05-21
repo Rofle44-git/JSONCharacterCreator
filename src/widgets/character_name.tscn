@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://je2uky26oxsg"]
+
+[ext_resource type="PackedScene" uid="uid://wi6g0605sdy6" path="res://src/widgets/slideshow_panel.tscn" id="1_qkr2d"]
+[ext_resource type="Script" path="res://src/widgets/character_name.gd" id="2_7yxxl"]
+
+[node name="CharacterName" node_paths=PackedStringArray("main_focus") instance=ExtResource("1_qkr2d")]
+script = ExtResource("2_7yxxl")
+main_focus = NodePath("VBoxContainer/Content/LineEdit")
+
+[node name="Header" parent="VBoxContainer" index="0"]
+text = "Name"
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+placeholder_text = "Chiharu Yamada"
+
+[node name="Previous" parent="VBoxContainer/HBoxContainer" index="0"]
+visible = false
+
+[connection signal="text_changed" from="VBoxContainer/Content/LineEdit" to="." method="_on_line_edit_text_changed"]
+[connection signal="text_submitted" from="VBoxContainer/Content/LineEdit" to="." method="_on_line_edit_text_submitted" unbinds=1]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]

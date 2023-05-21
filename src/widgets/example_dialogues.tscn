@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://414hs1qq6nr0"]
+
+[ext_resource type="PackedScene" uid="uid://wi6g0605sdy6" path="res://src/widgets/slideshow_panel.tscn" id="1_17v8m"]
+[ext_resource type="Script" path="res://src/widgets/example_dialogues.gd" id="2_dw520"]
+[ext_resource type="PackedScene" uid="uid://dj4lkfxevpedy" path="res://src/widgets/dialogue_editor.tscn" id="2_nu5uf"]
+
+[node name="ExampleDialogues" node_paths=PackedStringArray("main_focus") instance=ExtResource("1_17v8m")]
+script = ExtResource("2_dw520")
+main_focus = NodePath("VBoxContainer/Content/DialogueEditor/HBoxContainer/LineEdit")
+
+[node name="Header" parent="VBoxContainer" index="0"]
+text = "Example Dialogue"
+
+[node name="DialogueEditor" parent="VBoxContainer/Content" index="0" instance=ExtResource("2_nu5uf")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Next" parent="VBoxContainer/HBoxContainer" index="1"]
+disabled = false
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]
+
+[editable path="VBoxContainer/Content/DialogueEditor"]

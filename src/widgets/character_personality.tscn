@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://jjdvxc4y0nlp"]
+
+[ext_resource type="PackedScene" uid="uid://wi6g0605sdy6" path="res://src/widgets/slideshow_panel.tscn" id="1_vn2ay"]
+[ext_resource type="Script" path="res://src/widgets/character_personality.gd" id="2_7hy2s"]
+
+[node name="CharacterPersonality" node_paths=PackedStringArray("main_focus") instance=ExtResource("1_vn2ay")]
+script = ExtResource("2_7hy2s")
+main_focus = NodePath("VBoxContainer/Content/TextEdit")
+
+[node name="Header" parent="VBoxContainer" index="0"]
+text = "Personality"
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Chiharu Yamada is a young, computer engineer-nerd with a knack for problem solving and a passion for technology."
+wrap_mode = 1
+
+[connection signal="text_changed" from="VBoxContainer/Content/TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]

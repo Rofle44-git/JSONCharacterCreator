@@ -1,0 +1,43 @@
+[gd_scene load_steps=8 format=3 uid="uid://c0o3ycht44vqu"]
+
+[ext_resource type="Theme" uid="uid://dsk3ummrmyljp" path="res://src/resources/default.tres" id="1_7ys1q"]
+[ext_resource type="PackedScene" uid="uid://je2uky26oxsg" path="res://src/widgets/character_name.tscn" id="1_e0ty5"]
+[ext_resource type="Script" path="res://src/scenes/main.gd" id="1_xbq4e"]
+[ext_resource type="PackedScene" uid="uid://2tf6g8hurcts" path="res://src/widgets/character_greeting.tscn" id="2_ofyao"]
+[ext_resource type="PackedScene" uid="uid://jjdvxc4y0nlp" path="res://src/widgets/character_personality.tscn" id="3_2w1ib"]
+[ext_resource type="PackedScene" uid="uid://414hs1qq6nr0" path="res://src/widgets/example_dialogues.tscn" id="4_gvk71"]
+[ext_resource type="PackedScene" uid="uid://xl3sootanwck" path="res://src/widgets/save_character.tscn" id="5_rpex3"]
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_7ys1q")
+script = ExtResource("1_xbq4e")
+
+[node name="CharacterName" parent="." instance=ExtResource("1_e0ty5")]
+layout_mode = 1
+
+[node name="CharacterGreeting" parent="." instance=ExtResource("2_ofyao")]
+layout_mode = 1
+offset_left = 355.0
+offset_right = 835.0
+
+[node name="CharacterPersonality" parent="." instance=ExtResource("3_2w1ib")]
+layout_mode = 1
+offset_left = 950.0
+offset_right = 1430.0
+
+[node name="ExampleDialogues" parent="." instance=ExtResource("4_gvk71")]
+layout_mode = 1
+offset_left = 1545.0
+offset_right = 2025.0
+scale = Vector2(0.983333, 1)
+
+[node name="SaveCharacter" parent="." instance=ExtResource("5_rpex3")]
+layout_mode = 1
+offset_left = 2100.0
+offset_right = 2580.0
