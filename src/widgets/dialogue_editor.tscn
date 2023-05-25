@@ -15,6 +15,7 @@ offset_bottom = 251.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rit86")
+character_limit = 3000
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 unique_name_in_owner = true
@@ -37,5 +38,18 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+placeholder_text = "Order: User, Character, User, Character..."
 
+[node name="Limit" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.784314)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/line_spacing = -41
+text = "0000/3000"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="update_limit_label" unbinds=1]
 [connection signal="text_submitted" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
