@@ -14,6 +14,7 @@ text = "Name"
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
+tooltip_text = "Character name displayed in chat"
 placeholder_text = "Chiharu Yamada"
 
 [node name="Previous" parent="VBoxContainer/HBoxContainer" index="0"]

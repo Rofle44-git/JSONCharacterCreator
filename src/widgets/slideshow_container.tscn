@@ -1,0 +1,53 @@
+[gd_scene load_steps=9 format=3 uid="uid://c0o3ycht44vqu"]
+
+[ext_resource type="Theme" uid="uid://dsk3ummrmyljp" path="res://src/resources/default.tres" id="1_3eipc"]
+[ext_resource type="PackedScene" uid="uid://je2uky26oxsg" path="res://src/widgets/character_name.tscn" id="2_3svg4"]
+[ext_resource type="Script" path="res://src/widgets/slideshow_container.gd" id="2_v4322"]
+[ext_resource type="PackedScene" uid="uid://2tf6g8hurcts" path="res://src/widgets/character_greeting.tscn" id="3_sptd8"]
+[ext_resource type="PackedScene" uid="uid://jjdvxc4y0nlp" path="res://src/widgets/character_personality.tscn" id="4_epv7w"]
+[ext_resource type="PackedScene" uid="uid://ddvjyyrkmw261" path="res://src/widgets/world_scenario.tscn" id="5_sm7o8"]
+[ext_resource type="PackedScene" uid="uid://414hs1qq6nr0" path="res://src/widgets/example_dialogues.tscn" id="6_pdhqf"]
+[ext_resource type="PackedScene" uid="uid://xl3sootanwck" path="res://src/widgets/save_character.tscn" id="7_uxixh"]
+
+[node name="SlideshowContainer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_3eipc")
+script = ExtResource("2_v4322")
+
+[node name="CharacterName" parent="." instance=ExtResource("2_3svg4")]
+layout_mode = 1
+
+[node name="CharacterGreeting" parent="." instance=ExtResource("3_sptd8")]
+layout_mode = 1
+offset_left = 355.0
+offset_right = 835.0
+
+[node name="CharacterPersonality" parent="." instance=ExtResource("4_epv7w")]
+layout_mode = 1
+offset_left = 950.0
+offset_right = 1430.0
+
+[node name="WorldScenario" parent="." instance=ExtResource("5_sm7o8")]
+layout_mode = 1
+offset_left = 1545.0
+offset_right = 2025.0
+
+[node name="ExampleDialogues" parent="." instance=ExtResource("6_pdhqf")]
+layout_mode = 1
+offset_left = 2142.0
+offset_top = -237.0
+offset_right = 2622.0
+offset_bottom = 243.0
+scale = Vector2(0.983333, 1)
+
+[node name="SaveCharacter" parent="." instance=ExtResource("7_uxixh")]
+layout_mode = 1
+offset_left = 2697.0
+offset_top = -237.0
+offset_right = 3177.0
+offset_bottom = 243.0

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://ceggeq574k5if"]
+
+[ext_resource type="Script" path="res://src/widgets/character_limit_label.gd" id="1_qjlk6"]
+
+[node name="CharacterLimitLabel" type="Label"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -77.0
+offset_top = -27.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "400/500"
+horizontal_alignment = 2
+vertical_alignment = 1
+script = ExtResource("1_qjlk6")

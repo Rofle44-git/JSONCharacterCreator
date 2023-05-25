@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://mpbo0tn6jtb0"]
+[gd_scene load_steps=4 format=3 uid="uid://mpbo0tn6jtb0"]
 
 [ext_resource type="Script" path="res://src/widgets/file_dialog_button.gd" id="1_dx8jm"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_wms6k"]
+device = -1
+ctrl_pressed = true
+keycode = 79
+
+[sub_resource type="Shortcut" id="Shortcut_57pxu"]
+events = [SubResource("InputEventKey_wms6k")]
 
 [node name="FileDialogButton" type="HBoxContainer"]
 offset_right = 40.0
@@ -13,13 +21,14 @@ size_flags_horizontal = 3
 
 [node name="Open" type="Button" parent="."]
 layout_mode = 2
+shortcut = SubResource("Shortcut_57pxu")
 text = "..."
 
 [node name="FileDialog" type="FileDialog" parent="."]
 initial_position = 1
 title = "Open a Directory"
-size = Vector2i(520, 340)
-ok_button_text = "Select This Folder"
+size = Vector2i(526, 340)
+ok_button_text = "Select Current Folder"
 file_mode = 2
 access = 2
 show_hidden_files = true

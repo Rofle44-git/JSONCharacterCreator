@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddvjyyrkmw261"]
+
+[ext_resource type="PackedScene" uid="uid://wi6g0605sdy6" path="res://src/widgets/slideshow_panel.tscn" id="1_oyshn"]
+[ext_resource type="Script" path="res://src/widgets/world_scenario.gd" id="2_bdokc"]
+[ext_resource type="PackedScene" uid="uid://ceggeq574k5if" path="res://src/widgets/character_limit_label.tscn" id="2_ythit"]
+
+[node name="WorldScenario" node_paths=PackedStringArray("main_focus") instance=ExtResource("1_oyshn")]
+script = ExtResource("2_bdokc")
+main_focus = NodePath("VBoxContainer/Content/TextEdit")
+
+[node name="Header" parent="VBoxContainer" index="0"]
+text = "World Scenario"
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer/Content" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "<USER> and <BOT> meet to talk about computers."
+wrap_mode = 1
+
+[node name="CharacterLimitLabel" parent="VBoxContainer/Content/TextEdit" index="5" node_paths=PackedStringArray("target") instance=ExtResource("2_ythit")]
+layout_mode = 1
+offset_left = -82.0
+offset_right = -5.0
+target = NodePath("..")
+maximum = 200
+
+[node name="Next" parent="VBoxContainer/HBoxContainer" index="1"]
+disabled = false
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]

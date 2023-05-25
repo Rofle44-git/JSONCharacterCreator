@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://jjdvxc4y0nlp"]
+[gd_scene load_steps=4 format=3 uid="uid://jjdvxc4y0nlp"]
 
 [ext_resource type="PackedScene" uid="uid://wi6g0605sdy6" path="res://src/widgets/slideshow_panel.tscn" id="1_vn2ay"]
 [ext_resource type="Script" path="res://src/widgets/character_personality.gd" id="2_7hy2s"]
+[ext_resource type="PackedScene" uid="uid://ceggeq574k5if" path="res://src/widgets/character_limit_label.tscn" id="3_jp5fb"]
 
 [node name="CharacterPersonality" node_paths=PackedStringArray("main_focus") instance=ExtResource("1_vn2ay")]
 script = ExtResource("2_7hy2s")
@@ -13,8 +14,18 @@ text = "Personality"
 [node name="TextEdit" type="TextEdit" parent="VBoxContainer/Content" index="0"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Notable personality traits and
+hobbies of the character
+\"<Character> is a <adjective(s)> <species>\""
 placeholder_text = "Chiharu Yamada is a young, computer engineer-nerd with a knack for problem solving and a passion for technology."
 wrap_mode = 1
+
+[node name="CharacterLimitLabel" parent="VBoxContainer/Content/TextEdit" index="5" node_paths=PackedStringArray("target") instance=ExtResource("3_jp5fb")]
+layout_mode = 1
+offset_left = -82.0
+offset_right = -5.0
+target = NodePath("..")
+maximum = 500
 
 [connection signal="text_changed" from="VBoxContainer/Content/TextEdit" to="." method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Next" to="." method="_on_next_pressed"]

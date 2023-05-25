@@ -15,6 +15,9 @@ text = "Example Dialogue"
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="LineEdit" parent="VBoxContainer/Content/DialogueEditor/HBoxContainer" index="0"]
+placeholder_text = "Order: User, Character, etc."
+
 [node name="Next" parent="VBoxContainer/HBoxContainer" index="1"]
 disabled = false
 
