@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://ba7vs7h2jj1vw" path="res://src/widgets/message.tscn" id="1_amoju"]
 
 [node name="UserMessage" instance=ExtResource("1_amoju")]
-theme_override_constants/margin_left = 18
+theme_override_constants/margin_left = 24
 Sender = "user"

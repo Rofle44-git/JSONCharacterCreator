@@ -52,6 +52,7 @@ func _on_line_edit_text_submitted(new_text : String) -> void:
 	%Messages.add_child(message);
 	message_lengths.append(new_text.length()+9);
 	update_messages_length(); 
+	
 	# Scroll down
-	await %Messages.resized;
-	%ScrollContainer.scroll_vertical = %Messages.size.y;
+	await get_tree().process_frame;
+	%ScrollContainer.set_deferred("scroll_vertical", %ScrollContainer.get_v_scroll_bar().max_value);

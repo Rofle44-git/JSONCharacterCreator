@@ -3,5 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://ba7vs7h2jj1vw" path="res://src/widgets/message.tscn" id="1_i11df"]
 
 [node name="CharacterMessage" instance=ExtResource("1_i11df")]
-theme_override_constants/margin_right = 18
+theme_override_constants/margin_right = 24
 Sender = "char"
