@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://664g2275ahqj"]
+
+[node name="UnsavedChanges" type="ConfirmationDialog"]
+initial_position = 2
+title = "Unsaved character"
+size = Vector2i(360, 124)
+visible = true
+unresizable = true
+ok_button_text = "Yes discard"
+dialog_text = "You haven't saved your character. Discard character?"
+dialog_autowrap = true
+cancel_button_text = "No stay"

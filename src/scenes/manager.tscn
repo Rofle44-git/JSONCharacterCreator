@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://don7qr7k01ore"]
+
+[ext_resource type="Script" path="res://src/scenes/manager.gd" id="1_f3drm"]
+[ext_resource type="Theme" uid="uid://dsk3ummrmyljp" path="res://src/resources/default.tres" id="2_6a0bq"]
+[ext_resource type="PackedScene" uid="uid://qu51vbq6u74e" path="res://src/widgets/back_to_menu.tscn" id="3_82j6u"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_ejmvi"]
+device = -1
+ctrl_pressed = true
+keycode = 76
+
+[sub_resource type="Shortcut" id="Shortcut_wklgh"]
+events = [SubResource("InputEventKey_ejmvi")]
+
+[node name="Manager" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_f3drm")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_6a0bq")
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 120
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_type_variation = &"MediumMargin"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(0, 420)
+layout_mode = 2
+
+[node name="Folders" type="Tree" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+column_titles_visible = true
+hide_root = true
+select_mode = 1
+
+[node name="Load" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+disabled = true
+shortcut = SubResource("Shortcut_wklgh")
+text = "Load"
+
+[node name="BackToMenu" parent="." instance=ExtResource("3_82j6u")]
+layout_mode = 1
+offset_right = 159.0
+
+[connection signal="item_selected" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Folders" to="." method="_on_folders_item_selected"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/Load" to="." method="_on_load_pressed"]

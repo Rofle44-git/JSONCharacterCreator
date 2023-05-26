@@ -14,7 +14,7 @@ func _on_save_pressed() -> void:
 		"example_dialogue": Global.c_example_dialogue,
 	};
 	
-	var f : FileAccess = FileAccess.open(Global.save_location.path_join(Global.c_name+".json"), FileAccess.WRITE);
+	var f : FileAccess = FileAccess.open(Global.characters_location.path_join(Global.c_name+".json"), FileAccess.WRITE);
 	var str_data : String = JSON.stringify(json_data);
 	f.store_string(str_data);
 	f.close();
@@ -24,6 +24,7 @@ func _on_save_pressed() -> void:
 	c.load(Global.CONFIG_PATH);
 	c.set_value("User", "UsedGayXTimes", c.get_value("User", "UsedGayXTimes", 0)+str_data.countn("gay"));
 	c.save(Global.CONFIG_PATH);
+	Global.unsaved_changes = false;
 
 func _on_new_pressed() -> void:
 	get_tree().reload_current_scene();

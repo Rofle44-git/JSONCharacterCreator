@@ -1,8 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvf2dh3c2mvuk"]
+[gd_scene load_steps=11 format=3 uid="uid://dvf2dh3c2mvuk"]
 
 [ext_resource type="Script" path="res://src/scenes/main.gd" id="1_xbq4e"]
-[ext_resource type="PackedScene" uid="uid://c0o3ycht44vqu" path="res://src/widgets/slideshow_container.tscn" id="1_y6b5j"]
+[ext_resource type="Texture2D" uid="uid://c5wgfsop1gd70" path="res://assets/textures/add.png" id="2_2k1kl"]
+[ext_resource type="Texture2D" uid="uid://by1ltwph6xxs2" path="res://assets/textures/switch.png" id="3_veku3"]
 [ext_resource type="Texture2D" uid="uid://3r0i420mwr4h" path="res://assets/textures/gear.png" id="9_ggx22"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_3t114"]
+device = -1
+ctrl_pressed = true
+keycode = 78
+
+[sub_resource type="Shortcut" id="Shortcut_5l0d5"]
+events = [SubResource("InputEventKey_3t114")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_250bm"]
+device = -1
+ctrl_pressed = true
+keycode = 77
+
+[sub_resource type="Shortcut" id="Shortcut_1llf5"]
+events = [SubResource("InputEventKey_250bm")]
+
+[sub_resource type="InputEventKey" id="InputEventKey_klul4"]
+device = -1
+ctrl_pressed = true
+keycode = 83
+
+[sub_resource type="Shortcut" id="Shortcut_mrnrt"]
+events = [SubResource("InputEventKey_klul4")]
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -13,21 +38,53 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xbq4e")
 
-[node name="SlideshowContainer" parent="." instance=ExtResource("1_y6b5j")]
+[node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = -78.0
+offset_right = 112.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Settings" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -57.0
-offset_top = 9.0
-offset_right = -9.0
-offset_bottom = 45.0
-grow_horizontal = 0
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_type_variation = &"Slight"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Create" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+shortcut = SubResource("Shortcut_5l0d5")
+text = " New Characters"
+icon = ExtResource("2_2k1kl")
+alignment = 0
+
+[node name="Manage" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+shortcut = SubResource("Shortcut_1llf5")
+text = " Manage Characters"
+icon = ExtResource("3_veku3")
+alignment = 0
+
+[node name="Settings" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+shortcut = SubResource("Shortcut_mrnrt")
+text = " Settings"
 icon = ExtResource("9_ggx22")
+alignment = 0
 
-[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
-
-[editable path="SlideshowContainer"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Manage" to="." method="_on_manage_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]

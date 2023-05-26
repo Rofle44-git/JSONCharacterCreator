@@ -2,6 +2,7 @@ extends "res://src/widgets/slideshow_panel.gd"
 
 
 func _on_line_edit_text_changed(new_text : String) -> void:
+	Global.unsaved_changes = true;
 	%Next.disabled = new_text == "";
 
 func _on_next_pressed() -> void:

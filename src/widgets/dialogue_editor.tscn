@@ -31,18 +31,28 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 alignment = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HFlowContainer" type="HFlowContainer" parent="."]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="HFlowContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(361, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-placeholder_text = "Order: User, Character, User, Character..."
+placeholder_text = "Order: User, Character, User, Character"
 
-[node name="Limit" type="Label" parent="HBoxContainer"]
+[node name="AutoPaste" type="Button" parent="HFlowContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+tooltip_text = "Auto paste from clipboard when
+window enters focus"
+toggle_mode = true
+text = "Auto paste"
+
+[node name="Limit" type="Label" parent="HFlowContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 10
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.784314)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
@@ -51,5 +61,5 @@ text = "0000/3000"
 horizontal_alignment = 2
 vertical_alignment = 2
 
-[connection signal="text_changed" from="HBoxContainer/LineEdit" to="." method="update_limit_label" unbinds=1]
-[connection signal="text_submitted" from="HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
+[connection signal="text_changed" from="HFlowContainer/LineEdit" to="." method="update_limit_label" unbinds=1]
+[connection signal="text_submitted" from="HFlowContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]

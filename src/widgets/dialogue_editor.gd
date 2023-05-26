@@ -11,6 +11,7 @@ var total_messages_length : int;
 var input_characters : int;
 
 func _ready() -> void:
+	get_window().focus_entered.connect(_on_window_focus_entered);
 	update_limit_label();
 
 func get_content() -> String:
@@ -34,9 +35,7 @@ func update_limit_label() -> void:
 	
 func _on_remove(from : int) -> void:
 	var node : Node;
-	print("Attempting to remove from message ", from+1);
 	for i in %Messages.get_child_count()-from:
-		print("Removing message ", %Messages.get_child_count(), " with ", %Messages.get_child_count(), " messages in the tree.");
 		node = %Messages.get_child(%Messages.get_child_count()-1);
 		message_lengths.remove_at(%Messages.get_child_count()-1);
 		%Messages.remove_child(node);
@@ -56,3 +55,7 @@ func _on_line_edit_text_submitted(new_text : String) -> void:
 	# Scroll down
 	await get_tree().process_frame;
 	%ScrollContainer.set_deferred("scroll_vertical", %ScrollContainer.get_v_scroll_bar().max_value);
+
+func _on_window_focus_entered():
+	if %AutoPaste.button_pressed:
+		_on_line_edit_text_submitted(DisplayServer.clipboard_get());

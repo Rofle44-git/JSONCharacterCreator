@@ -39,4 +39,4 @@ theme/custom="res://src/resources/default.tres"
 [rendering]
 
 renderer/rendering_method="mobile"
-environment/defaults/default_clear_color=Color(0.0196078, 0.0313726, 0.0784314, 1)
+environment/defaults/default_clear_color=Color(0.0117647, 0.0196078, 0.0470588, 1)

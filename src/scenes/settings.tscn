@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlep6nhtm35ra"]
+[gd_scene load_steps=7 format=3 uid="uid://dlep6nhtm35ra"]
 
 [ext_resource type="Script" path="res://src/scenes/settings.gd" id="1_qokvt"]
+[ext_resource type="PackedScene" uid="uid://mpbo0tn6jtb0" path="res://src/widgets/file_dialog_button.tscn" id="2_purk1"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_kdnxp"]
 device = -1
@@ -21,28 +22,27 @@ events = [SubResource("InputEventKey_6ychj")]
 initial_position = 2
 size = Vector2i(540, 660)
 transient = true
+exclusive = true
 unresizable = true
-popup_window = true
 script = ExtResource("1_qokvt")
 
-[node name="Control" type="Control" parent="."]
-layout_mode = 3
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-offset_left = 12.0
-offset_top = 12.0
-offset_right = 528.0
-offset_bottom = 648.0
 theme_type_variation = &"BigSpacing"
 alignment = 2
 
-[node name="Header" type="Label" parent="Control/VBoxContainer"]
+[node name="Header" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_type_variation = &"HeaderLarge"
@@ -54,28 +54,30 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Content" type="MarginContainer" parent="Control/VBoxContainer"]
+[node name="Content" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="Control/VBoxContainer/Content"]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/Content"]
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="GridContainer" type="GridContainer" parent="Control/VBoxContainer/Content/Control"]
-layout_mode = 2
-offset_left = 30.0
-offset_right = 486.0
-offset_bottom = 549.0
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer/Content/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 columns = 2
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/Content/Control/GridContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Content/Control/GridContainer"]
 layout_mode = 2
 size_flags_vertical = 1
 text = "Your name"
 vertical_alignment = 1
 
-[node name="YourName" type="LineEdit" parent="Control/VBoxContainer/Content/Control/GridContainer"]
+[node name="YourName" type="LineEdit" parent="MarginContainer/VBoxContainer/Content/Control/GridContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -83,22 +85,30 @@ placeholder_text = "You"
 caret_blink = true
 caret_blink_interval = 0.5
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/Content/Control/GridContainer"]
+layout_mode = 2
+text = "Character Location"
+
+[node name="CharactersLocation" parent="MarginContainer/VBoxContainer/Content/Control/GridContainer" instance=ExtResource("2_purk1")]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Cancel" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Cancel" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 shortcut = SubResource("Shortcut_d40p4")
 text = "Cancel"
 
-[node name="Apply" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+[node name="Apply" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 10
 shortcut = SubResource("Shortcut_036la")
 text = "Apply"
 
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
-[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Apply" to="." method="_on_apply_pressed"]
